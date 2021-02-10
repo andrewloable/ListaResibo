@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             Title="Lista Resibo"
+             Appearing="ContentPage_Appearing"
+             x:Class="ListaResibo.MainPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <ActivityIndicator x:Name="prg" IsVisible="false" IsRunning="True"/>
+
+        <StackLayout x:Name="stack" Orientation="Horizontal" VerticalOptions="Start" HorizontalOptions="Center">
+            <Picker 
+                Title="Select Month"
+                VerticalOptions="CenterAndExpand"
+                SelectedIndexChanged="pickMonth_SelectedIndexChanged"
+                WidthRequest="120"
+                x:Name="pickMonth">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>January</x:String>
+                        <x:String>February</x:String>
+                        <x:String>March</x:String>
+                        <x:String>April</x:String>
+                        <x:String>May</x:String>
+                        <x:String>June</x:String>
+                        <x:String>July</x:String>
+                        <x:String>August</x:String>
+                        <x:String>September</x:String>
+                        <x:String>October</x:String>
+                        <x:String>November</x:String>
+                        <x:String>December</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Picker 
+                Title="Select Year"
+                VerticalOptions="CenterAndExpand"
+                SelectedIndexChanged="pickMonth_SelectedIndexChanged"
+                WidthRequest="120"
+                x:Name="pickYear">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>2021</x:String>
+                        <x:String>2022</x:String>
+                        <x:String>2023</x:String>
+                        <x:String>2024</x:String>
+                        <x:String>2025</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <ImageButton 
+                Source="baseline_share_24.png"
+                BackgroundColor="Transparent"
+                Clicked="ImageButton_Clicked_1"/>
+        </StackLayout>
+
+        <ListView x:Name="lst" Margin="0, 50, 0, 0" RowHeight="90" IsPullToRefreshEnabled="True" Refreshing="lst_Refreshing">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <SwipeView>
+                            <SwipeView.GestureRecognizers>
+                                <SwipeGestureRecognizer Direction="Left" CommandParameter="{Binding .}" Swiped="SwipeGestureRecognizer_Swiped"/>
+                            </SwipeView.GestureRecognizers>
+                            <SwipeView.Content>
+                                <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal" VerticalOptions="FillAndExpand">
+                                    <StackLayout Padding="10,10,10,10" VerticalOptions="StartAndExpand" Orientation="Vertical">
+                                        <Label Text="{Binding name} " VerticalTextAlignment="Center" FontSize="Medium" />
+                                        <Label Text="{Binding dtstring}" VerticalTextAlignment="Center" FontSize="Small" />
+                                        <Label Text="{Binding amt}" VerticalTextAlignment="Center" FontSize="Small" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </SwipeView.Content>
+                        </SwipeView>                        
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ImageButton 
+            x:Name="addbtn"
+            Source="baseline_add_a_photo_24.png"
+            BackgroundColor="Transparent"
+            Grid.Row="0"
+            WidthRequest="80"
+            HeightRequest="80"
+            Margin="0, 0, 20, 22"
+            VerticalOptions="End"
+            HorizontalOptions="End"
+            Clicked="ImageButton_Clicked"/>
+    </Grid>
+
+</ContentPage>

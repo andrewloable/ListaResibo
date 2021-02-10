@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListaResibo.Details">
+    <ContentPage.Content>
+        <Grid VerticalOptions="FillAndExpand" Padding="15, 15, 15, 15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <ScrollView Grid.Row="0">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Taxable Month"/>
+                    <DatePicker x:Name="taxableMonth" />
+                    <Label Text="Taxpayer ID Number (Store)"/>
+                    <Entry x:Name="tin" Placeholder="000-000-000-000" Keyboard="Telephone" ReturnType="Next"/>
+                    <Label Text="Registered Name (SEC/DTI)"/>
+                    <Entry x:Name="regname" Placeholder="Cooper Gaming Inc." ReturnType="Next">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                    <Label Text="Supplier Name"/>
+                    <Entry x:Name="suppliername" Placeholder="Family Name, Given Name Middle Name" ReturnType="Next">
+                        <Entry.Keyboard>
+                            <Keyboard x:FactoryMethod="Create">
+                                <x:Arguments>
+                                    <KeyboardFlags>CapitalizeWord</KeyboardFlags>
+                                </x:Arguments>
+                            </Keyboard>
+                        </Entry.Keyboard>
+                    </Entry>
+                    <Label Text="Gross Purchase Amount"/>
+                    <Entry x:Name="grossamt" Placeholder="0.00" Keyboard="Numeric" ReturnType="Next"/>
+                    <Label Text="Exempted Purchase Amount"/>
+                    <Entry x:Name="exemptamt" Placeholder="0.00" Keyboard="Numeric" ReturnType="Next"/>
+                    <Label Text="Taxable Purchase Amount"/>
+                    <Entry x:Name="taxableamt" Placeholder="0.00" Keyboard="Numeric" ReturnType="Done"/>
+                </StackLayout>
+            </ScrollView>
+            <Button Text="Save" x:Name="save" Clicked="save_Clicked" Grid.Row="1"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

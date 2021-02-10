@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ListaResibo.Piktyuran">
+    <ContentPage.Content>        
+        <Grid VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="45"/>
+            </Grid.RowDefinitions>
+            <Button Text="Take Snapshot" x:Name="snap" Clicked="snap_Clicked" Grid.Row="0"/>
+            <Image x:Name="piktyur" Aspect="AspectFit" Grid.Row="1"/>
+            <Button Text="Enter Details" x:Name="dets" Clicked="dets_Clicked"  Grid.Row="2"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
